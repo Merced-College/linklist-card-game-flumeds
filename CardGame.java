@@ -46,21 +46,25 @@ public class CardGame {
             System.err.println("Error reading file: " + e.getMessage());
         }
 
-        // Print the loaded cards
-        System.out.println("Cards loaded:");
+        cardList.shuffle();
+
+        // Print the shuffled deck
+        System.out.println("Shuffled Deck:");
         cardList.displayList();
-		
-		Card[] playerHand = new Card[5];
-		for(int i = 0; i < playerHand.length; i++)
-			playerHand[i] = cardList.getFirst();
-		
-		System.out.println("players hand");
-		for(int i = 0; i < playerHand.length; i++)
-			System.out.println(playerHand[i]);
-		
-		System.out.println();
-		System.out.println("the deck");
-		cardList.displayList();
+
+        // Deal cards to a player
+        Card[] playerHand = new Card[5];
+        for (int i = 0; i < playerHand.length; i++) {
+            playerHand[i] = cardList.getFirst();
+        }
+
+        System.out.println("Player's Hand:");
+        for (Card card : playerHand) {
+            System.out.println(card);
+        }
+
+        System.out.println("\nRemaining Deck:");
+        cardList.displayList();
 
 	}//end main
 
