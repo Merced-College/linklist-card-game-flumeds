@@ -22,6 +22,32 @@ public class LinkList
 		first = newLink;            // now first points to this
 	}
 	//-------------------------------------------------------------
+	
+	// added shuffle card method
+	public void shuffle() {
+        if (first == null || first.next == null) {
+            return; // No need to shuffle if the list is empty or has one element
+        }
+
+        // Step 1: Convert the linked list into a List<Card>
+        List<Card> cardList = new ArrayList<>();
+        Link current = first;
+        while (current != null) {
+            cardList.add(current.cardLink);
+            current = current.next;
+        }
+
+        // Step 2: Shuffle the list using Collections.shuffle
+        Collections.shuffle(cardList);
+
+        // Step 3: Rebuild the linked list from the shuffled list
+        first = null; // Clear the current list
+        for (Card card : cardList) {
+            add(card); // Add cards back into the linked list
+        	}
+    	}
+	//ends
+	
 	public Link find(Card cardToFind)      // find link with given key
 	{                           // (assumes non-empty list)
 		Link current = first;              // start at 'first'
